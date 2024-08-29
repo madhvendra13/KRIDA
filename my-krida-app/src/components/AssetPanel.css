@@ -1,0 +1,88 @@
+.asset-panel {
+  width: 300px;
+  background-color: rgb(97, 97, 225);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+  box-sizing: border-box;
+}
+
+.search-bar {
+  margin-top: 30px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  width: 70%;
+}
+
+.search-bar input {
+  width: 65%;
+  padding: 10px 40px 10px 10px; /* Add padding for the icon */
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-bar-icon {
+  position: absolute;
+  left: 210px;
+  top: 118px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: gray;
+}
+
+.asset-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  overflow-y: auto;
+}
+
+.asset-slot {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  height: 100px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* Assign different Scratch colors to each asset slot */
+.asset-slot:nth-child(1) {
+  background-color: var(--scratch-orange);
+}
+
+.asset-slot:nth-child(2) {
+  background-color: var(--scratch-blue);
+}
+
+.asset-slot:nth-child(3) {
+  background-color: var(--scratch-green);
+}
+
+.asset-slot:nth-child(4) {
+  background-color: var(--scratch-purple);
+}
+
+.asset-slot:nth-child(5) {
+  background-color: var(--scratch-red);
+}
+
+.asset-slot:nth-child(6) {
+  background-color: var(--scratch-yellow);
+}
+
+.asset-slot:hover {
+  opacity: 0.8; /* Slight opacity change on hover */
+}

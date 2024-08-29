@@ -1,0 +1,156 @@
+/* App.css */
+:root {
+  --scratch-orange: #F9A83A;
+  --scratch-blue: #4C97FF;
+  --scratch-green: #59C059;
+  --scratch-purple: #9966FF;
+  --scratch-red: #FF6680;
+  --scratch-yellow: #FFD500;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.navbar {
+  background-color: var(--scratch-orange);
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center KRIDA text */
+  align-items: center; /* Center content vertically */
+  height: 50px; /* Fixed height for consistent centering */
+  box-sizing: border-box; /* Include padding in height calculation */
+  position: relative; /* For absolute positioning of game name and user profile containers */
+}
+
+.game-name-container {
+  position: absolute;
+  left: 20px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the game name */
+  font-size: 20px;
+}
+.game-name-container:hover{
+  opacity: 0.7;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.navbar-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+.navbar-title:hover{
+  font-size: 20px;
+  font-weight:bold;
+  opacity: 0.7;
+}
+
+.user-profile-container {
+  position: absolute;
+  right: 20px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the username */
+  font-size: 20px;
+}
+.user-profile-container:hover{
+  font-size: 19px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 50px); /* Adjust the height considering the navbar height */
+}
+
+/* Game Window Styling */
+.game-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  padding: 20px; /* Reduced padding for better fit */
+  overflow: hidden;
+}
+
+.game-area {
+  flex: 1;
+  background-color: white;
+  border: 2px solid var(--scratch-purple);
+  margin-bottom: 20px;
+  height: 70%; /* Adjusted height for the game area */
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.play-button {
+  background-color: var(--scratch-green);
+  color: white;
+}
+.play-button:hover{
+  opacity: 0.7;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.stop-button {
+  background-color: var(--scratch-red);
+  color: white;
+  
+}
+.stop-button:hover{
+  opacity: 0.7;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.fullscreen-button {
+  background-color: var(--scratch-yellow);
+  color: black;
+}
+.fullscreen-button:hover{
+  opacity: 0.7;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    height: auto; /* Adjust height to auto for smaller screens */
+  }
+
+  .game-window {
+    padding: 10px;
+  }
+
+  .game-area {
+    height: 60%; /* Adjust height for smaller screens */
+  }
+}

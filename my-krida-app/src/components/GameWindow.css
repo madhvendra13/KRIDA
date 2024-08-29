@@ -1,0 +1,49 @@
+.game-window {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    position: relative;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 400px;
+    z-index: 10; /* Ensure Game Window is below the Side Panel */
+  }
+  
+  .game-area {
+    flex: 1;
+    background-color: white;
+    border: 2px solid var(--scratch-purple);
+    margin-bottom: 20px;
+    height: 70%;
+  }
+  
+  .game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .play-button {
+    background-color: var(--scratch-green);
+    color: white;
+  }
+  
+  .stop-button {
+    background-color: var(--scratch-red);
+    color: white;
+  }
+  
+  .fullscreen-button {
+    background-color: var(--scratch-yellow);
+    color: black;
+  }
+  

@@ -22,7 +22,7 @@
 }
 
 .search-bar input {
-  width: 65%;
+  width: 80%;
   padding: 10px 40px 10px 10px;
   border: none;
   border-radius: 5px;
@@ -31,7 +31,7 @@
 
 .search-bar-icon {
   position: absolute;
-  left: 210px;
+  left: 168px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
@@ -63,18 +63,19 @@
 /* Side panel styles */
 .side-panel {
   display: none;
-  position: fixed; /* Fixed positioning for side panel */
+  position: fixed;
   top: 0;
-  right: 0; /* Position from the right side of the viewport */
-  width: 200px;
-  background-color: #fff;
-  color: black;
-  border: 2px solid #ccc;
+  right: 0;
+  width: 300px;
+  background-color: rgb(97, 97, 225); /* Match the background color of the asset panel */
+  color: white;
+  border: 2px solid white;
   border-radius: 5px;
-  padding: 10px;
+  padding: 20px;
   z-index: 10;
-  height: 100%; /* Full height of the viewport */
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  height: 100vh; /* Full height */
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 /* Show side panel when asset is active */
@@ -82,18 +83,70 @@
   display: block;
 }
 
-/* Style for child components */
-.side-panel .child-component {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
+/* Arrange child components like assets in the asset container */
+.side-panel .child-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Match the asset container layout */
+  grid-gap: 10px;
 }
 
+.side-panel .child-component {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  height: 100px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effect for child components */
 .side-panel .child-component:hover {
-  opacity: 0.7;
+  opacity: 0.8;
   font-weight: bold;
 }
 
+/* Assign different Scratch colors to each child component */
+.side-panel .child-component:nth-child(1) {
+  background-color: var(--scratch-orange);
+}
+
+.side-panel .child-component:nth-child(2) {
+  background-color: var(--scratch-blue);
+}
+
+.side-panel .child-component:nth-child(3) {
+  background-color: var(--scratch-green);
+}
+
+.side-panel .child-component:nth-child(4) {
+  background-color: var(--scratch-purple);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .asset-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .asset-container {
+    grid-template-columns: 1fr;
+  }
+
+  .side-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .side-panel .child-container {
+    grid-template-columns: 1fr; /* Stack child components vertically on small screens */
+  }
+}
 /* Assign different Scratch colors to each asset slot */
 .asset-slot:nth-child(1) {
   background-color: var(--scratch-orange);
@@ -118,19 +171,9 @@
 .asset-slot:nth-child(6) {
   background-color: var(--scratch-yellow);
 }
-
+/* Enhanced hover effect for asset slots */
 .asset-slot:hover {
-  opacity: 0.8;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .asset-panel {
-    width: 100%;
-    height: auto;
-  }
-
-  .asset-container {
-    grid-template-columns: 1fr; /* Stack assets vertically on small screens */
-  }
+  transform: scale(1.02); /* Slightly enlarge the asset slot */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+  opacity: 0.7;
 }

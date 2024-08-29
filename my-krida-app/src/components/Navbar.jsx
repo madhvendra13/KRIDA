@@ -13,4 +13,4 @@
       );
     }
     
-    export default Navbar;  // Make sure this line is present
+    export default Navbar;  

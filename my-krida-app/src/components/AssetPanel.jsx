@@ -1,27 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './AssetPanel.css';
 
-function AssetPanel() {
+function AssetPanel({ onAssetSelected }) {
   const [activeAsset, setActiveAsset] = useState(null);
 
   const handleClick = (asset) => {
     setActiveAsset(asset === activeAsset ? null : asset);
   };
 
-  // Close the side panel when clicking outside of the AssetPanel
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (event.target.closest('.asset-panel') === null) {
-        setActiveAsset(null);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [activeAsset]);
+  const handleChildClick = (child) => {
+    onAssetSelected(child);
+    setActiveAsset(null);
+  };
 
   return (
     <div className="asset-panel">
@@ -32,6 +22,7 @@ function AssetPanel() {
         </div>
       </div>
       <div className="asset-container">
+        {/* Road Asset */}
         <div
           className={`asset-slot ${activeAsset === 'Road' ? 'active' : ''}`}
           onClick={() => handleClick('Road')}
@@ -39,13 +30,15 @@ function AssetPanel() {
           Road
           {activeAsset === 'Road' && (
             <div className="side-panel">
-              <div className="child-component">Asphalt Road</div>
-              <div className="child-component">Dirt Road</div>
-              <div className="child-component">Gravel Road</div>
-              <div className="child-component">Paved Road</div>
+              <div className="child-component" onClick={() => handleChildClick('Asphalt Road')}>Asphalt Road</div>
+              <div className="child-component" onClick={() => handleChildClick('Dirt Road')}>Dirt Road</div>
+              <div className="child-component" onClick={() => handleChildClick('Gravel Road')}>Gravel Road</div>
+              <div className="child-component" onClick={() => handleChildClick('Paved Road')}>Paved Road</div>
             </div>
           )}
         </div>
+
+        {/* Car Asset */}
         <div
           className={`asset-slot ${activeAsset === 'Car' ? 'active' : ''}`}
           onClick={() => handleClick('Car')}
@@ -53,27 +46,14 @@ function AssetPanel() {
           Car
           {activeAsset === 'Car' && (
             <div className="side-panel">
-              <div className="child-component">Sports Car</div>
-              <div className="child-component">SUV</div>
-              <div className="child-component">Truck</div>
-              <div className="child-component">Sedan</div>
+              <div className="child-component" onClick={() => handleChildClick('Sports Car')}>Sports Car</div>
+              <div className="child-component" onClick={() => handleChildClick('Race Car')}>Race Car</div>
+              {/* Add more child components for Car */}
             </div>
           )}
         </div>
-        <div
-          className={`asset-slot ${activeAsset === 'Obstacles' ? 'active' : ''}`}
-          onClick={() => handleClick('Obstacles')}
-        >
-          Obstacles
-          {activeAsset === 'Obstacles' && (
-            <div className="side-panel">
-              <div className="child-component">Traffic Cone</div>
-              <div className="child-component">Barrier</div>
-              <div className="child-component">Speed Bump</div>
-              <div className="child-component">Pothole</div>
-            </div>
-          )}
-        </div>
+
+        {/* Environment Asset */}
         <div
           className={`asset-slot ${activeAsset === 'Environment' ? 'active' : ''}`}
           onClick={() => handleClick('Environment')}
@@ -81,13 +61,29 @@ function AssetPanel() {
           Environment
           {activeAsset === 'Environment' && (
             <div className="side-panel">
-              <div className="child-component">Tree</div>
-              <div className="child-component">Building</div>
-              <div className="child-component">Street Light</div>
-              <div className="child-component">Bench</div>
+              <div className="child-component" onClick={() => handleChildClick('Forest')}>Forest</div>
+              <div className="child-component" onClick={() => handleChildClick('Desert')}>Desert</div>
+              {/* Add more child components for Environment */}
             </div>
           )}
         </div>
+
+        {/* Obstacles Asset */}
+        <div
+          className={`asset-slot ${activeAsset === 'Obstacles' ? 'active' : ''}`}
+          onClick={() => handleClick('Obstacles')}
+        >
+          Obstacles
+          {activeAsset === 'Obstacles' && (
+            <div className="side-panel">
+              <div className="child-component" onClick={() => handleChildClick('Cone')}>Cone</div>
+              <div className="child-component" onClick={() => handleChildClick('Barrier')}>Barrier</div>
+              {/* Add more child components for Obstacles */}
+            </div>
+          )}
+        </div>
+
+        {/* Reward Asset */}
         <div
           className={`asset-slot ${activeAsset === 'Reward' ? 'active' : ''}`}
           onClick={() => handleClick('Reward')}
@@ -95,24 +91,24 @@ function AssetPanel() {
           Reward
           {activeAsset === 'Reward' && (
             <div className="side-panel">
-              <div className="child-component">Gold Coin</div>
-              <div className="child-component">Star</div>
-              <div className="child-component">Medal</div>
-              <div className="child-component">Trophy</div>
+              <div className="child-component" onClick={() => handleChildClick('Star')}>Star</div>
+              <div className="child-component" onClick={() => handleChildClick('Coin')}>Coin</div>
+              {/* Add more child components for Reward */}
             </div>
           )}
         </div>
+
+        {/* Put In Asset */}
         <div
-          className={`asset-slot ${activeAsset === 'PutIn' ? 'active' : ''}`}
-          onClick={() => handleClick('PutIn')}
+          className={`asset-slot ${activeAsset === 'Put In' ? 'active' : ''}`}
+          onClick={() => handleClick('Put In')}
         >
           Put In
-          {activeAsset === 'PutIn' && (
+          {activeAsset === 'Put In' && (
             <div className="side-panel">
-              <div className="child-component">Slot 1</div>
-              <div className="child-component">Slot 2</div>
-              <div className="child-component">Slot 3</div>
-              <div className="child-component">Slot 4</div>
+              <div className="child-component" onClick={() => handleChildClick('Arrow Up')}>Arrow Up</div>
+              <div className="child-component" onClick={() => handleChildClick('Arrow Down')}>Arrow Down</div>
+              {/* Add more child components for Put In */}
             </div>
           )}
         </div>

@@ -7,7 +7,7 @@
     border-radius: 10px;
     overflow: hidden;
     min-height: 400px;
-    z-index: 10; /* Ensure Game Window is below the Side Panel */
+     /* Ensure Game Window is below the Side Panel */
   }
   
   .game-area {

@@ -14,9 +14,9 @@ function GameWindow({ selectedAsset }) {
         };
 
         p.draw = () => {
-          p.background(200);
+          // p.background(200);
           if (selectedAsset) {
-            p.fill(0);
+            // p.fill(0);
             p.textSize(24);
             p.textAlign(p.CENTER, p.CENTER);
             p.text(`Selected Asset: ${selectedAsset}`, p.width / 2, p.height / 2);
@@ -35,7 +35,7 @@ function GameWindow({ selectedAsset }) {
                 p.background(100);
                 break;
               case 'Sports Car':
-                p.fill(255, 0, 0);
+                // p.fill(255, 0, 0);
                 p.rect(p.width / 2 - 50, p.height / 2 - 25, 100, 50);
                 break;
               case 'Race Car':
@@ -89,13 +89,15 @@ function GameWindow({ selectedAsset }) {
         p5InstanceRef.current.remove();
       }
     };
-  }, [selectedAsset]);
-
+  }, []);
+  const runGame = () => {
+    console.log('Running');
+  }
   return (
     <div className="game-window">
       <div className="game-area" ref={canvasRef}></div>
       <div className="game-controls">
-        <button className="play-button">Play</button>
+        <button className="play-button" onClick={runGame}>Play</button>
         <button className="stop-button">Stop</button>
         <button className="fullscreen-button">Fullscreen</button>
       </div>
